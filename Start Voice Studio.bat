@@ -1,9 +1,13 @@
 @echo off
+setlocal
 cd /d "%~dp0"
 
-if not exist "%~dp0.venv\Scripts\python.exe" (
+set "PYW=%~dp0.venv\Scripts\pythonw.exe"
+set "PY=%~dp0.venv\Scripts\python.exe"
+
+if not exist "%PY%" (
   echo Missing app Python:
-  echo   %~dp0.venv\Scripts\python.exe
+  echo   %PY%
   echo.
   echo Run setup.bat first. You need Python 3.11, ffmpeg, and an NVIDIA GPU.
   echo See README.md for the full install list.
@@ -12,5 +16,13 @@ if not exist "%~dp0.venv\Scripts\python.exe" (
   exit /b 1
 )
 
-REM wscript hides the console. `start python.exe` opens Windows Terminal (often acrylic).
-wscript.exe "%~dp0Start Voice Studio.vbs"
+set "HF_HUB_DISABLE_XET=1"
+if exist "D:\HuggingFace" set "HF_HOME=D:\HuggingFace"
+
+REM Empty title + pythonw = app window only, no Windows Terminal.
+if exist "%PYW%" (
+  start "" "%PYW%" "%~dp0app.py"
+) else (
+  start "" /B "%PY%" "%~dp0app.py"
+)
+endlocal

@@ -154,6 +154,9 @@ def main() -> None:
         height=720,
         min_size=(900, 560),
         background_color="#101214",
+        transparent=False,
+        shadow=False,
+        vibrancy=False,
     )
     webview.start(http_server=True)
 

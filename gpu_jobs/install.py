@@ -158,7 +158,16 @@ def _prefetch_whisper(f5_py: Path) -> None:
     )
 
 
-def main() -> None:
+def _ensure_pythonw(venv: Path) -> None:
+    dst = venv / "Scripts" / "pythonw.exe"
+    if dst.exists():
+        return
+    src = Path(sys.executable).with_name("pythonw.exe")
+    if not src.exists():
+        src = Path(sys.base_prefix) / "pythonw.exe"
+    if src.exists():
+        shutil.copy2(src, dst)
+        print("copied pythonw.exe into UI venv", flush=True)
     os.chdir(ROOT)
     _refresh_path()
     _need_python_311()
@@ -172,6 +181,7 @@ def main() -> None:
     if not UI_PY.exists():
         print("creating UI venv", flush=True)
         _run([sys.executable, "-m", "venv", str(UI_VENV)])
+    _ensure_pythonw(UI_VENV)
     _run([str(UI_PY), "-m", "pip", "install", "--upgrade", "pip"])
     _run([str(UI_PY), "-m", "pip", "install", "-r", str(ROOT / "requirements.txt")])
 

@@ -1,0 +1,42 @@
+# Third-party notices
+
+Voice Studio application code is MIT (see LICENSE). Model weights and third-party
+packages keep their own licenses. You must follow those licenses if you download
+and run them.
+
+## OmniVoice (primary clone engine)
+
+- Package: [omnivoice](https://pypi.org/project/omnivoice/) / [k2-fsa/OmniVoice](https://huggingface.co/k2-fsa/OmniVoice)
+- Python package: Apache-2.0 (as published on PyPI)
+- Model weights (`models/omnivoice/`): **CC-BY-NC-4.0** (non-commercial)
+- Do not use OmniVoice weights in a commercial product unless you obtain a
+  separate license from the weight owners.
+
+## F5-TTS (clone fallback)
+
+- Code: [SWivid/F5-TTS](https://github.com/SWivid/F5-TTS)
+- Weights: [SWivid/F5-TTS](https://huggingface.co/SWivid/F5-TTS) (`F5TTS_v1_Base`)
+- Vocoder: [charactr/vocos-mel-24khz](https://huggingface.co/charactr/vocos-mel-24khz)
+
+Read the upstream LICENSE / model card before commercial use.
+
+## faster-whisper (prompt transcription)
+
+- [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper)
+- First clone downloads Whisper `small` CTranslate2 weights to your Hugging Face cache.
+
+## Microsoft Edge TTS (stock voices)
+
+- Package: [edge-tts](https://github.com/rany2/edge-tts)
+- Voices are provided by Microsoft’s online neural TTS service. You need internet
+  for stock Indian voices. Follow Microsoft’s terms for that service.
+
+## PyTorch CUDA wheels
+
+- Installed from https://download.pytorch.org/whl/cu121 (`torch==2.5.1+cu121`)
+- NVIDIA driver license and PyTorch license apply.
+
+## Responsible use
+
+Only clone voices you own or have explicit permission to use. Do not impersonate
+people, commit fraud, or generate non-consensual audio.

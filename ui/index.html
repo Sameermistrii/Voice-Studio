@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voice Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <p class="eyebrow">Local clone</p>
+        <h1>Voice Studio</h1>
+      </div>
+      <p class="hw" id="hw">Checking GPU…</p>
+    </header>
+
+    <section class="voice-studio">
+      <div class="voice-col">
+        <h2>Clone voice</h2>
+        <p class="fine" id="cloneHint">Upload 10–30 seconds of someone talking — your voice or another, with permission. Name it, then pick it under Speak with. OmniVoice first, F5-TTS as backup.</p>
+        <input id="cloneName" type="text" placeholder="Voice name, e.g. Tanya" />
+        <div class="row">
+          <button type="button" id="cloneBtn">Upload voice sample</button>
+          <input id="voiceInput" type="file" accept="audio/*" hidden />
+        </div>
+        <p class="fine" id="voiceStatus">No clone yet.</p>
+      </div>
+      <div class="voice-col grow">
+        <h2>Generate voice</h2>
+        <textarea id="voiceScript" rows="8" placeholder="Type the lines you want in the selected cloned voice."></textarea>
+        <label class="voice-label">Speak with
+          <select id="speakVoice"></select>
+        </label>
+        <div class="fx-row">
+          <label class="voice-label">Speed <span id="speedVal">1.00×</span>
+            <input id="voiceSpeed" type="range" min="75" max="135" step="5" value="100" />
+          </label>
+          <label class="voice-label">Pitch <span id="pitchVal">0 st</span>
+            <input id="voicePitch" type="range" min="-6" max="6" step="1" value="0" />
+          </label>
+        </div>
+        <p class="fine">0 st is the natural pitch of the clone.</p>
+      </div>
+      <div class="voice-col">
+        <h2>Voice output</h2>
+        <button type="button" class="primary" id="speakBtn">Generate voice</button>
+        <audio id="voicePlayer" controls></audio>
+        <p class="fine" id="voicePath">No voice file yet.</p>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# models/f5-venv — install AFTER torch==2.5.1+cu121
+f5-tts
+faster-whisper
+librosa
+soundfile
+numpy
+huggingface_hub
+pydub

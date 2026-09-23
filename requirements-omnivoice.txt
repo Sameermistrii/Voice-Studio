@@ -1,0 +1,13 @@
+# models/omnivoice-venv — install AFTER torch==2.5.1+cu121
+omnivoice==0.2.1
+accelerate
+huggingface_hub
+librosa
+pydub
+soundfile
+webdataset
+tensorboardx
+transformers>=5.3.0
+typing-extensions
+numpy
+scipy

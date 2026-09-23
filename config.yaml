@@ -1,0 +1,7 @@
+tts:
+  engine: edge
+  voice: en-IN-NeerjaNeural
+  rate: "-8%"
+  pitch: "+1Hz"
+  sample_rate: 24000
+  sentence_gap_ms: 110

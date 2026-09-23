@@ -1,0 +1,135 @@
+:root {
+  --bg: #101214;
+  --panel: #181b1f;
+  --text: #f3f5f7;
+  --muted: #9aa3ad;
+  --line: #2a3038;
+  --green: #00e676;
+  --btn: #f3f5f7;
+  --btn-text: #101214;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+}
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px 18px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--green);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+h1 { margin: 4px 0 0; font-size: 28px; font-weight: 650; }
+h2 { margin: 0 0 10px; font-size: 13px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.hw { color: var(--muted); font-size: 12px; margin: 0; }
+.voice-studio {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 260px 1fr 280px;
+  gap: 16px;
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+.voice-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.voice-col input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #121417;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: 14px "Segoe UI", sans-serif;
+  margin: 0 0 10px;
+}
+.voice-studio .primary {
+  margin-top: 0;
+}
+textarea {
+  flex: 1;
+  width: 100%;
+  resize: none;
+  border: 1px solid var(--line);
+  background: #121417;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 14px;
+  font: 16px/1.45 "Segoe UI", sans-serif;
+  min-height: 160px;
+}
+.voice-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.fx-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+.fx-row .voice-label { margin: 8px 0 0; }
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--green);
+  height: 18px;
+}
+select, button {
+  font: 14px "Segoe UI", sans-serif;
+}
+select {
+  background: #121417;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.row { display: flex; gap: 8px; margin-top: 12px; }
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #2a3038;
+  color: var(--text);
+  cursor: pointer;
+}
+button.primary {
+  background: var(--green);
+  color: #062;
+  font-weight: 700;
+  padding: 14px 12px;
+  font-size: 15px;
+}
+button:disabled { opacity: 0.5; cursor: wait; }
+.fine { color: var(--muted); font-size: 12px; line-height: 1.4; margin: 10px 0 0; }
+audio {
+  width: 100%;
+  margin-top: 10px;
+  height: 36px;
+}

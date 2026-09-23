@@ -10,7 +10,9 @@ Repository: https://github.com/Sameermistrii/Voice-Studio
 
 ## Complete install requirements
 
-Read this list before you clone the repo. The installer (`setup.bat`) checks Python 3.11 and ffmpeg, then installs everything else.
+Double-click **`setup.bat`**. It downloads every app file automatically (Python packages, CUDA PyTorch, OmniVoice, F5-TTS, Vocos, Whisper). If Python 3.11 or ffmpeg is missing, it tries to install them with **winget**.
+
+You still need a Windows PC with an **NVIDIA GPU driver** already installed. The installer will not flash a GPU driver.
 
 ### Computer (hardware)
 
@@ -25,50 +27,27 @@ Read this list before you clone the repo. The installer (`setup.bat`) checks Pyt
 
 A dedicated GPU is required. CPU-only PyTorch will not run the clone engines as shipped.
 
-### Software you must install first (not bundled)
+### What `setup.bat` downloads for you
 
-1. **Python 3.11 64-bit** (not 3.10, not 3.12, not 3.13)
-   - https://www.python.org/downloads/release/python-3119/
-   - During setup: tick **Add python.exe to PATH**
-   - Disable the Windows **App execution aliases** for `python.exe` / `python3.exe` (Settings → Apps → Advanced app settings → App execution aliases) so the Store stub does not shadow real Python
-   - Confirm in a **new** Command Prompt:
-     ```bat
-     python --version
-     ```
-     Must print `Python 3.11.x`
+Internet is required. Leave the window open (30–90 minutes on first run).
 
-2. **Git**
-   - https://git-scm.com/download/win
-   - Needed only to clone this repository
+- Python 3.11 (via winget, if missing)
+- ffmpeg (via winget, if missing)
+- VC++ 2015–2022 x64 (via winget, if missing)
+- UI packages (`requirements.txt`)
+- OmniVoice venv + **torch 2.5.1+cu121**
+- F5-TTS venv + **torch 2.5.1+cu121**
+- OmniVoice weights (`k2-fsa/OmniVoice` → `models/omnivoice/`)
+- F5-TTS v1 Base + Vocos (`models/f5tts/`)
+- Whisper `small` (used when cloning)
 
-3. **ffmpeg** (on PATH)
-   - Recommended:
-     ```bat
-     winget install Gyan.FFmpeg
-     ```
-   - Or https://www.gyan.dev/ffmpeg/builds/ (full build), then add the `bin` folder to PATH
-   - Confirm:
-     ```bat
-     ffmpeg -version
-     ```
+### Software that is not auto-installed
 
-4. **NVIDIA Game Ready / Studio driver**
-   - Recent driver with **CUDA 12.x** user-mode support
-   - You do **not** need to install the full CUDA Toolkit or Visual Studio
-   - Confirm:
-     ```bat
-     nvidia-smi
-     ```
-     Must show your GPU name and driver version
+1. **NVIDIA Game Ready / Studio driver** — install from NVIDIA, then `nvidia-smi` must work. No CUDA Toolkit needed.
+2. **Git** — only if you clone with `git clone`. A GitHub ZIP extract works without Git.
+3. **winget / App Installer** — comes with Windows 10/11. Needed for the Python/ffmpeg auto-install.
 
-5. **Microsoft Visual C++ Redistributable 2015–2022 (x64)**
-   - https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
-   - Needed by PyTorch / pywebview on many clean Windows installs
-
-6. **Internet**
-   - First install downloads PyPI packages, PyTorch cu121 wheels, Hugging Face weights, and (on first clone) Whisper `small`
-   - Hugging Face: https://huggingface.co must be reachable
-   - Stock Edge TTS voices also need internet at generate time
+If winget cannot install Python 3.11: https://www.python.org/downloads/release/python-3119/ (tick **Add python.exe to PATH**, turn off Microsoft Store **python.exe** aliases).
 
 ### Python packages (installed for you)
 
@@ -97,7 +76,7 @@ index: https://download.pytorch.org/whl/cu121
 | OmniVoice | `k2-fsa/OmniVoice` | `models/omnivoice/` | ~2.5 GB + tokenizer |
 | F5-TTS v1 Base | `SWivid/F5-TTS` | `models/f5tts/F5TTS_v1_Base/` | ~1.3 GB |
 | Vocos vocoder | `charactr/vocos-mel-24khz` | `models/f5tts/vocos/` | ~50 MB |
-| Whisper small | faster-whisper (`small`) | Hugging Face cache | ~500 MB, **first clone only** |
+| Whisper small | faster-whisper (`small`) | Hugging Face cache | ~500 MB, downloaded by `setup.bat` |
 
 OmniVoice **weights are CC-BY-NC-4.0** (non-commercial). See `NOTICE`.
 
@@ -131,11 +110,11 @@ python gpu_jobs\install.py
 
 The installer will:
 
-1. Refuse to continue unless Python is **3.11** and `ffmpeg` is on PATH
+1. Install Python 3.11 and ffmpeg with winget if they are missing
 2. Create `.venv` and install `requirements.txt`
 3. Create `models/omnivoice-venv`, install CUDA torch + OmniVoice
 4. Create `models/f5-venv`, install CUDA torch + F5-TTS + faster-whisper
-5. Download OmniVoice and F5-TTS / Vocos weights
+5. Download OmniVoice, F5-TTS, Vocos, and Whisper weights
 
 Expect **30–90 minutes** depending on GPU driver, disk, and network. PyTorch wheels are large.
 

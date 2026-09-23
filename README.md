@@ -6,6 +6,23 @@ No cloud TTS API key is required for cloned voices. Stock Indian voices use Micr
 
 Repository: https://github.com/Sameermistrii/Voice-Studio
 
+## Index
+
+1. [Complete install requirements](#complete-install-requirements)
+   - [Computer (hardware)](#computer-hardware)
+   - [What `setup.bat` downloads for you](#what-setupbat-downloads-for-you)
+   - [Software that is not auto-installed](#software-that-is-not-auto-installed)
+   - [Python packages (installed for you)](#python-packages-installed-for-you)
+   - [Model weights (downloaded for you)](#model-weights-downloaded-for-you)
+   - [Optional environment variables](#optional-environment-variables)
+2. [Install (Windows)](#install-windows)
+   - [Launch](#launch)
+3. [Manual install (same result, step by step)](#manual-install-same-result-step-by-step)
+4. [Use](#use)
+5. [Layout after install](#layout-after-install)
+6. [Troubleshooting](#troubleshooting)
+7. [License](#license)
+
 ---
 
 ## Complete install requirements
